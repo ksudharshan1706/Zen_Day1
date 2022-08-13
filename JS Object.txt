@@ -1,0 +1,41 @@
+JavaScript Object:
+
+	A JavaScript object has properties associated with it. 
+	A property of an object can be explained as a variable that is attached to the object. 
+	Object properties are basically the same as ordinary JavaScript variables, except for the attachment to objects. 
+	The properties of an object define the characteristics of the object. You access the properties of an object with a simple dot-notation:
+	EX:
+		objectName.propertyName
+	=> Unassigned properties of an object are undefined (and not null).
+	
+	Properties of JavaScript objects can also be accessed or set using a bracket notation.
+	myCar['make'] = 'Ford';
+	myCar['model'] = 'Mustang';
+	myCar['year'] = 1969;
+	
+	Creating an Object:
+		=> let bike = {
+			name: 'SuperSport',
+			maker:'Ducati',
+			engine:'937cc'
+		};
+	
+	
+	object with constructor:
+		=> Constructor is nothing but a function and with help of new keyword, constructor function allows to create multiple objects of same flavor as shown below
+		Ex: 
+		
+		function Vehicle(name, maker) 
+		{
+		   this.name = name;
+		   this.maker = maker;
+		}
+		let car1 = new Vehicle(’City’, 'Honda’);
+		let car2 = new Vehicle(’Venue’, 'Hyndai’);
+		let bike1 = new Vehicle(’Apache’, 'TVS’);
+		
+		console.log(car1.name);    //Output: City
+		console.log(car2.name);	   //Output: Venue
+		console.log(bike1.name);   //Output: Apache
+		
+			

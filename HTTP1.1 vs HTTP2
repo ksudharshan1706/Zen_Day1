@@ -1,0 +1,40 @@
+Difference between HTTP/1.1 and HTTP/2
+
+=> HTTP/1.1:
+
+HTTP/1.1, the first standardized version of HTTP, was introduced in 1997. 
+It presented significant performance optimizations (over HTTP/0.9 and HTTP/1.0) and transformed the way requests and responses were exchanged between clients and servers.
+
+=> key features:
+1. HTTP/1.1 supports connection reuse i.e., for every single TCP connection there can be multiple requests and responses through the connection.
+   TCP connection was not terminated immediately like prior HTTP versions. kepp alive option was introduced for the above purpose.
+2. HTTP/1.1 provided support for chunk transfers
+3. pipelining => the second request is sent before the response to the first is adequately served
+4. cache control 
+
+HTTP/1.1 provides faster delivery of web pages and reduces web traffic as compared to HTTP/1.0. 
+However, TCP starts slowly and with domain sharding,connection reuse and pipelining, there is an increased 
+risk of network congestion.
+
+=> These are the drawbacks that lead to the creation of HTTP/2:
+
+1. HTTP/1.1 transfer all the requests & responses in the plain text message form. 
+2. Head of line blocking in which TCP connection is blocked all other requests until the response does not receive. 
+   all the information related to the header file is repeated in every request.
+   
+=> HTTP/2: (6 connections per host)
+
+HTTP/2 was developed over the SPDY (speedy) protocol. was introduced in 2012. 
+HTTP/2 works on the binary framing layer instead of textual that converts all the messages in binary format
+
+=> key Features:
+1.	Server Push => server aniticipates resources required by the client and pushes them to the client even before the clients requests.
+	the client has the authorization to deny.
+2.	Multiplexing => multiple requests and responses per each TCP connection. Interleaves the requests and responses without head-of-line blocking
+	does this on a single TCP connection.
+3. 	Binary Protocol => The binary framing layer divides the message into frames that are segregated based on their type – Data or Header. 
+	This feature greatly increases efficiency in terms of security, compression and multiplexing.
+4.	Data split is managed by HPACK to seperate Data from Header.
+	HPACK header compression algorithm that is resilient to attacks like CRIME and utilizes static Huffman encoding.
+
+it compresses the header. The server sends all the other files like CSS & JS without the request of the client using the PUSH frame.
